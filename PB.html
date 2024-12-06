@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Calculator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+
+		.container {
+			max-width: 400px;
+			margin: auto;
+		}
+
+		label {
+			display: block;
+			margin: 10px 0 5px;
+		}
+
+		input,
+		button {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+		}
+
+		.result {
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+
+		.result2 {
+			font-size: 1.5em;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Play Bae Hour Calculator</h1>
+		<form id="calculator">
+			<label for="foodBill">Total Food Bill ($):</label>
+			<input type="number" id="foodBill" placeholder="Enter total food bill" required>
+
+			<label for="numPeople">Number of People:</label>
+			<input type="number" id="numPeople" placeholder="Enter number of people" required>
+
+			<label for="gameHours">Game Hours:</label>
+			<input type="number" id="gameHours" placeholder="Enter game hours" required>
+
+			<!-- <label for="hourlyRate">Hourly Rate ($):</label>
+			<input type="number" id="hourlyRate" value="10" required> -->
+
+			<button type="submit" id="calculateButton">Calculate</button>
+		</form>
+		<!-- <div class="result" id="result">Result: $0.00</div> -->
+		<div class="result2" id="result2">Final Game Hours: 0</div>
+	</div>
+
+	<script>
+		function calculate() {
+			const foodBill = parseFloat(document.getElementById('foodBill').value);
+			const numPeople = parseInt(document.getElementById('numPeople').value);
+			const gameHours = parseFloat(document.getElementById('gameHours').value);
+			// const hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
+
+			if (numPeople === 0) {
+				alert("Number of people cannot be zero!");
+				return;
+			}
+			// const totalGameCost = gameHours * hourlyRate;
+			// const totalCost = foodBill + totalGameCost;
+			// const costPerPerson = totalCost / numPeople;
+
+			const totalGameHour = numPeople * gameHours
+			var discountHour = 0
+			discountHour = 0
+			if (foodBill >= 500) {
+
+				discountHour = Math.round(foodBill / 500);
+			}
+			console.log(totalGameHour, discountHour)
+			const finalHours = totalGameHour - discountHour
+
+			// document.getElementById('result').textContent = `Result: $${costPerPerson.toFixed(2)}`;
+			document.getElementById('result2').textContent = `Final Game Hours: ${finalHours}`;
+			// Attach the calculate function to form submit
+		}
+		document.getElementById('calculator').addEventListener('submit', function (event) {
+			event.preventDefault();
+			calculate();
+		});
+
+		// Attach the calculate function to button click
+		document.getElementById('calculateButton').addEventListener('click', function (event) {
+			event.preventDefault();
+			calculate();
+		});
+	</script>
+</body>
+
+</html>
