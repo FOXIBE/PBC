@@ -82,7 +82,7 @@
 			discountHour = 0
 			if (foodBill >= 500) {
 
-				discountHour = Math.round(foodBill / 500);
+				discountHour = Math.floor(foodBill / 500);
 			}
 			console.log(totalGameHour, discountHour)
 			const finalHours = totalGameHour - discountHour
